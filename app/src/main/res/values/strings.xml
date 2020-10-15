@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Champlain College Trivia App</string>
     <string name="start_playing">Start Playing</string>
+    <string name="view_high_scores">View High Scores</string>
+    <string name="select_a_category">Select A Category</string>
+    <string name="category_buildings">Buildings</string>
+    <string name="category_faculty">Faculty</string>
+    <string name="category_burlington">Burlington</string>
+    <string name="question_counter">Question @a of @b</string>
+    <string name="hint">Hint</string>
 </resources>
