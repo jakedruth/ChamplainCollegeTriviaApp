@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bignerdranch.android.geoquiz.Question
 import com.bignerdranch.android.geoquiz.QuizViewModel
 
@@ -23,10 +24,6 @@ class QuestionActivity : AppCompatActivity() {
     lateinit var choicesBorders: Array<LinearLayout>
     lateinit var cheatButton: Button
     lateinit var nextButton: Button
-
-    val quizViewModel: QuizViewModel by lazy {
-        ViewModelProviders.of(this).get(QuizViewModel::class.java)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +44,7 @@ class QuestionActivity : AppCompatActivity() {
             cheat()
         }
 
-        cheatButton.isEnabled = !quizViewModel.didCheat
+        cheatButton.isEnabled = !MainActivity.quizViewModel.didCheat
 
         nextButton.setOnClickListener {
             handleNextButtonClick()
@@ -55,37 +52,32 @@ class QuestionActivity : AppCompatActivity() {
 
         nextButton.isEnabled = false
 
-        val filePath = intent.getStringExtra(QUIZ_FILE_PATH_KEY)
-        if (filePath != null) {
-            quizViewModel.loadQuizFromXMLFileStream(assets.open(filePath))
-            quizViewModel.start()
-        }
         displayQuestion()
     }
 
     private fun handlePlayerSelection(index: Int) {
 
-        val isCorrect:Boolean = quizViewModel.checkIfAnswerIsCorrect(index)
+        val isCorrect:Boolean = MainActivity.quizViewModel.checkIfAnswerIsCorrect(index)
         for (button in choicesButtons) {
             button.isEnabled = false
         }
         nextButton.isEnabled = true
 
         if (isCorrect) {
-            quizViewModel.increaseScore(10)
+            MainActivity.quizViewModel.increaseScore(10)
             choicesBorders[index].backgroundTintList = ContextCompat.getColorStateList(this, R.color.correct_answer)
         } else {
-            quizViewModel.increaseScore(-5)
+            MainActivity.quizViewModel.increaseScore(-5)
             choicesBorders[index].backgroundTintList = ContextCompat.getColorStateList(this, R.color.incorrect_answer)
-            choicesBorders[quizViewModel.getCorrectAnswerID()].backgroundTintList = ContextCompat.getColorStateList(this, R.color.correct_answer)
+            choicesBorders[MainActivity.quizViewModel.getCorrectAnswerID()].backgroundTintList = ContextCompat.getColorStateList(this, R.color.correct_answer)
         }
     }
 
     private fun cheat() {
-        var index: Int = quizViewModel.cheatAndRemoveOneQuestion()
+        var index: Int = MainActivity.quizViewModel.cheatAndRemoveOneQuestion()
         choicesButtons[index].isEnabled = false
         cheatButton.isEnabled = false
-        quizViewModel.increaseScore(-3)
+        MainActivity.quizViewModel.increaseScore(-3)
     }
 
     private fun handleNextButtonClick() {
@@ -97,27 +89,25 @@ class QuestionActivity : AppCompatActivity() {
 
         nextButton.isEnabled = false
 
-        if (quizViewModel.isNextQuestion()) {
-            quizViewModel.nextQuestion()
+        if (MainActivity.quizViewModel.isNextQuestion()) {
+            MainActivity.quizViewModel.nextQuestion()
             displayQuestion()
         } else {
-            val intent = Intent(this, ResultsActivity::class.java).apply {
-                putExtra(SCORE_KEY, quizViewModel.score.toString())
-            }
+            val intent = Intent(this, ResultsActivity::class.java)
             finish()
             startActivity(intent)
         }
     }
 
     private fun displayQuestion() {
-        var question = quizViewModel.getCurrentQuestion()
+        var question = MainActivity.quizViewModel.getCurrentQuestion()
         displayQuestion(question)
     }
 
     private fun displayQuestion(question: Question) {
         var counterText: String = getString(R.string.question_counter)
         counterText = counterText.replace("@a", (question.index + 1).toString())
-        counterText = counterText.replace("@b", quizViewModel.getQuestionCount().toString())
+        counterText = counterText.replace("@b", MainActivity.quizViewModel.getQuestionCount().toString())
         questionCounterTextView.text = counterText
 
         questionTextView.text = question.text;

@@ -9,6 +9,7 @@ import java.io.InputStream
 
 private const val TAG = "QuizViewModel"
 class QuizViewModel : ViewModel() {
+    var currentCategory: String = ""
     private var currentQuiz: Quiz = Quiz()
     private var currentQuestionIndex: Int = 0
     var score: Int = 0

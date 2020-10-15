@@ -18,9 +18,12 @@ class MenuActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button_buildings).setOnClickListener {
             //quizViewModel.loadQuizFromXMLFileStream(assets.open("questions_buildings.xml"))
-            val intent = Intent(this, QuestionActivity::class.java).apply {
-                putExtra(QUIZ_FILE_PATH_KEY, "questions_buildings.xml")
-            }
+
+            MainActivity.quizViewModel.currentCategory = "Buildings"
+            MainActivity.quizViewModel.loadQuizFromXMLFileStream(assets.open("questions_buildings.xml"))
+            MainActivity.quizViewModel.start()
+
+            val intent = Intent(this, QuestionActivity::class.java)
             startActivity(intent)
         }
     }
