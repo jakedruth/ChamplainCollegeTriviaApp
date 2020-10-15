@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-    <questions>
+    <quiz>
         <question correctID='0'>
             <text>I have officially read xml.</text>
             <choice>A</choice>
@@ -8,5 +8,12 @@
             <choice>C</choice>
             <choice>D</choice>
         </question>
-    </questions>
+        <question correctID='2'>
+            <text>This is the second question. So select the third answer</text>
+            <choice>the first choice</choice>
+            <choice>this is wrong too</choice>
+            <choice>PICK ME!</choice>
+            <choice>It's a trap</choice>
+        </question>
+    </quiz>
 </root>

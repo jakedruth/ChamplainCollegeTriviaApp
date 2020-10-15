@@ -5,14 +5,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProviders
+import com.bignerdranch.android.geoquiz.QuizViewModel
+
+public const val QUIZ_FILE_PATH_KEY = "QuizFilePathKey"
 
 class MenuActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
         findViewById<Button>(R.id.button_buildings).setOnClickListener {
-            val intent = Intent(this, QuestionActivity::class.java)
+            //quizViewModel.loadQuizFromXMLFileStream(assets.open("questions_buildings.xml"))
+            val intent = Intent(this, QuestionActivity::class.java).apply {
+                putExtra(QUIZ_FILE_PATH_KEY, "questions_buildings.xml")
+            }
             startActivity(intent)
         }
     }
