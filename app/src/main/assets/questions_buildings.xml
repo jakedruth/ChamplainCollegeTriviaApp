@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <questions>
+        <question correctID='0'>
+            <text>I have officially read xml.</text>
+            <choice>A</choice>
+            <choice>B</choice>
+            <choice>C</choice>
+            <choice>D</choice>
+        </question>
+    </questions>
+</root>
