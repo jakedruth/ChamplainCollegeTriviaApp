@@ -2,18 +2,39 @@
 <root>
     <quiz>
         <question correctID='0'>
-            <text>I have officially read xml.</text>
-            <choice>A</choice>
-            <choice>B</choice>
-            <choice>C</choice>
-            <choice>D</choice>
+            <text>What year was Champlain College founded?</text>
+            <choice>1878</choice>
+            <choice>1943</choice>
+            <choice>1305</choice>
+            <choice>2020</choice>
         </question>
         <question correctID='2'>
-            <text>This is the second question. So select the third answer</text>
-            <choice>the first choice</choice>
-            <choice>this is wrong too</choice>
-            <choice>PICK ME!</choice>
-            <choice>It's a trap</choice>
+            <text>How many acres does the main residential campus occupy?</text>
+            <choice>5 acres</choice>
+            <choice>40 acres</choice>
+            <choice>27 acres</choice>
+            <choice>100 acres</choice>
+        </question>
+        <question correctID="3">
+            <text>What is our colleges motto</text>
+            <choice>Carpe Diem</choice>
+            <choice>Fiat lux</choice>
+            <choice>Lux Mentis Scientia</choice>
+            <choice>Audeamus</choice>
+        </question>
+        <question correctID="0">
+            <text>How many students are enrolled full-time?</text>
+            <choice>2078</choice>
+            <choice>2048</choice>
+            <choice>8702</choice>
+            <choice>4096</choice>
+        </question>
+        <question correctID="1">
+            <text>What is the current Male to Female ratio</text>
+            <choice>50% male, 50% female</choice>
+            <choice>64% male, 36% female</choice>
+            <choice>59% male, 41% female</choice>
+            <choice>90% male, 10% female</choice>
         </question>
     </quiz>
 </root>

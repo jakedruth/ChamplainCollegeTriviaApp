@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="@string/select_a_category"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/design_default_color_on_primary"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/rectangle_at_the_top"

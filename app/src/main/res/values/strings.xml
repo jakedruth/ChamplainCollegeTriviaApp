@@ -9,4 +9,6 @@
     <string name="question_counter">Question @a of @b</string>
     <string name="hint">Hint</string>
     <string name="next">Next</string>
+    <string name="results">Results</string>
+    <string name="your_score">Your Score: </string>
 </resources>

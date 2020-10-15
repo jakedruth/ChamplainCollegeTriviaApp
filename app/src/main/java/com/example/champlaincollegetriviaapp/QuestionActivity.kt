@@ -1,5 +1,6 @@
 package com.example.champlaincollegetriviaapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
@@ -23,7 +24,7 @@ class QuestionActivity : AppCompatActivity() {
     lateinit var cheatButton: Button
     lateinit var nextButton: Button
 
-    private val quizViewModel: QuizViewModel by lazy {
+    val quizViewModel: QuizViewModel by lazy {
         ViewModelProviders.of(this).get(QuizViewModel::class.java)
     }
 
@@ -84,6 +85,7 @@ class QuestionActivity : AppCompatActivity() {
         var index: Int = quizViewModel.cheatAndRemoveOneQuestion()
         choicesButtons[index].isEnabled = false
         cheatButton.isEnabled = false
+        quizViewModel.increaseScore(-3)
     }
 
     private fun handleNextButtonClick() {
@@ -99,10 +101,11 @@ class QuestionActivity : AppCompatActivity() {
             quizViewModel.nextQuestion()
             displayQuestion()
         } else {
-            for (button in choicesButtons) {
-                button.isEnabled = false
+            val intent = Intent(this, ResultsActivity::class.java).apply {
+                putExtra(SCORE_KEY, quizViewModel.score.toString())
             }
-            Toast.makeText(this, "No More Questions", Toast.LENGTH_LONG)
+            finish()
+            startActivity(intent)
         }
     }
 

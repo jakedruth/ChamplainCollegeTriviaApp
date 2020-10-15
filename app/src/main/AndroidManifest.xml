@@ -23,7 +23,10 @@
 
         <activity android:name=".QuestionActivity"
             android:parentActivityName=".MenuActivity">
+        </activity>
 
+        <activity android:name=".ResultsActivity"
+            android:parentActivityName=".MenuActivity">
         </activity>
     </application>
 
