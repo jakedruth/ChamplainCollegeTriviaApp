@@ -28,6 +28,10 @@
         <activity android:name=".ResultsActivity"
             android:parentActivityName=".MenuActivity">
         </activity>
+
+        <activity android:name=".HighScoresActivity"
+            android:parentActivityName=".MenuActivity">
+        </activity>
     </application>
 
 </manifest>

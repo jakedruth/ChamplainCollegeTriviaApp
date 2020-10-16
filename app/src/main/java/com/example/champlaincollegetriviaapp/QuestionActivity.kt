@@ -9,8 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.bignerdranch.android.geoquiz.Question
-import com.bignerdranch.android.geoquiz.QuizViewModel
 
 import androidx.lifecycle.ViewModelProviders
 

@@ -1,4 +1,4 @@
-package com.bignerdranch.android.geoquiz
+package com.example.champlaincollegetriviaapp
 
 import androidx.lifecycle.ViewModel
 import org.xmlpull.v1.XmlPullParser
